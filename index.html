@@ -12,26 +12,38 @@
   <body>
     <script src="js/three.js"></script>
     <script>
-      var scene = new THREE.Scene()
-      var camera = new THREE.PerspectiveCamera(
-        75,
-        window.innerWidth / window.innerHeight,
-        0.1,
-        1000
+      const scene = new THREE.Scene()
+      let fov = 75
+      let aspectRatio = (window.innerWidth/window.innerHeight)
+      let near = 0.1
+      let far = 1000
+      const camera = new THREE.PerspectiveCamera(
+        fov,
+        aspectRatio,
+        near,
+        far
       )
+      console.log(window.innerWidth/window.innerHeight)
+      console.log(window.innerWidth)
 
-      var renderer = new THREE.WebGLRenderer()
+
+      const renderer = new THREE.WebGLRenderer() // you can pas in the styled canvas element as an object
+      // set size of render(this is the canvas size)
       renderer.setSize(window.innerWidth, window.innerHeight)
-      document.body.appendChild(renderer.domElement)
-
-      var geometry = new THREE.BoxGeometry(1, 1, 1)
-      var material = new THREE.MeshBasicMaterial({ color: 0x00ff00 })
-      var cube = new THREE.Mesh(geometry, material)
+      document.body.appendChild(renderer.domElement) // append the canvas to the DOM
+      
+      let boxHeight = 2
+      let boxWidth = 2
+      let boxDepth = 2
+      const geometry = new THREE.BoxGeometry(boxHeight, boxWidth, boxWidth)
+      const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 })
+      const cube = new THREE.Mesh(geometry, material)
       scene.add(cube)
 
       camera.position.z = 5
+      //camera.position.x = 2
 
-      var animate = function () {
+      const animate = function () {
         requestAnimationFrame(animate)
 
         cube.rotation.x += 0.01
