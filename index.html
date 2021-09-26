@@ -14,8 +14,8 @@
       }
     </style>
   </head>
-  <canvas id="animation"></canvas>
   <body>
+    <canvas id="animation"></canvas>
     <script src="js/three.js"></script>
     <script>
       const canvas = document.querySelector('#animation')
@@ -34,7 +34,7 @@
       console.log(window.innerWidth)
 
 
-      const renderer = new THREE.WebGLRenderer({canvas}) // you can pas in the styled canvas element as an object
+      const renderer = new THREE.WebGLRenderer({canvas}) 
       // set size of render(this is the canvas size)
       renderer.setSize(window.innerWidth, window.innerHeight)
       
@@ -43,7 +43,7 @@
       let boxWidth = 2
       let boxDepth = 2
       const geometry = new THREE.BoxGeometry(boxHeight, boxWidth, boxWidth)
-      const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 })
+      const material = new THREE.MeshBasicMaterial({ color: 0xF6440D })
       const cube = new THREE.Mesh(geometry, material)
       scene.add(cube)
 
