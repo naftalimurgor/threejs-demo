@@ -7,11 +7,18 @@
       body {
         margin: 0;
       }
+      #animation {
+        height: 100%;
+        width: 100%;
+
+      }
     </style>
   </head>
+  <canvas id="animation"></canvas>
   <body>
     <script src="js/three.js"></script>
     <script>
+      const canvas = document.querySelector('#animation')
       const scene = new THREE.Scene()
       let fov = 75
       let aspectRatio = (window.innerWidth/window.innerHeight)
@@ -27,10 +34,10 @@
       console.log(window.innerWidth)
 
 
-      const renderer = new THREE.WebGLRenderer() // you can pas in the styled canvas element as an object
+      const renderer = new THREE.WebGLRenderer({canvas}) // you can pas in the styled canvas element as an object
       // set size of render(this is the canvas size)
       renderer.setSize(window.innerWidth, window.innerHeight)
-      document.body.appendChild(renderer.domElement) // append the canvas to the DOM
+      
       
       let boxHeight = 2
       let boxWidth = 2
